@@ -3,28 +3,30 @@ package com.jdr.tfg.modelo.beams;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-//? Especifica "usuarios" si no, falla;
-//? Es el nombre de la colección (no la ruta de GetMapping)
-@Document("usuarios")
+//! Especifica "usuarios" si no, falla;
+//! Es el nombre de la colección (no la ruta de GetMapping)
+@Document(collection = "usuarios")
 public class Usuario {
 
-	// ? Quito @Id; si pongo @Id para nombre no lo muestra bien
+	//! Quito @Id; si pongo @Id para nombre no lo muestra bien
 	@Id
 	private String usuarioId;
+	
 	private String nombre;
 	private String email;
+	private String contrasena;
 	private String rol;
 
 	public Usuario() {
 		super();
 	}
 
-	// ? ¿Hace falta?
-	public Usuario(String nombre, String email, String rol) {
+	public Usuario(String usuarioId, String nombre, String email, String contrasena, String rol) {
 		super();
 		this.usuarioId = usuarioId;
 		this.nombre = nombre;
 		this.email = email;
+		this.contrasena = contrasena;
 		this.rol = rol;
 	}
 
@@ -50,6 +52,14 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getContrasena() {
+		return contrasena;
+	}
+	
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public String getRol() {
