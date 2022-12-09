@@ -34,15 +34,6 @@ public class UsuarioControlador {
 	
 	// === CREATE ===
 	
-	/*
-	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping("/crear")
-	public String insertarUsuario(@RequestBody Usuario usuario) {
-		uRepo.save(usuario);
-		return "Nuevo registro insertado";
-	}
-	*/
-	
 	@PostMapping("/crear")
 	public ResponseEntity<Usuario> insertarUsuario(@RequestBody Usuario usuario) {
 		return new ResponseEntity<>(uRepo.save(usuario), HttpStatus.CREATED);
@@ -50,13 +41,6 @@ public class UsuarioControlador {
 		
 	// === READ ===
 
-	/*
-	@GetMapping("/mostrarTodos")
-	public List<Usuario> encontrarTodosUsuarios() {
-		return uRepo.findAll();
-	}
-	*/
-	
 	// ToDo: Bloque try-catch (colección vacía; server_error)
 	@GetMapping("/mostrarTodos")
 	public ResponseEntity<List<Usuario>> encontrarTodosLosUsuarios(@RequestParam(required = false) String usuarioId) {
@@ -70,12 +54,11 @@ public class UsuarioControlador {
 	}
 	
 	// ToDo: Bloque try-catch (usuario no existe)
-		@GetMapping("/mostrar/{email}")
-		public ResponseEntity<Usuario> encontrarUsuarioPorEmail(@PathVariable("email") String email) {
-			return new ResponseEntity<>(uRepo.findById(email).get(), HttpStatus.OK);
-		}
-	
-		
+	@GetMapping("/mostrar/{email}")
+	public ResponseEntity<Usuario> encontrarUsuarioPorEmail(@PathVariable("email") String email) {
+		return new ResponseEntity<>(uRepo.findById(email).get(), HttpStatus.OK);
+	}
+			
 	// === UPDATE ===
 		
 	// ToDo: Bloque try-catch (inmueble no existe; error en la actualización; server_error)
@@ -88,17 +71,8 @@ public class UsuarioControlador {
 		usuario.setRol(usuarioConCambios.getRol());
 		return new ResponseEntity<>(uRepo.save(usuario), HttpStatus.OK);	
 	}
-		
-		
+			
 	// === DELETE ===	
-	
-	/*
-	@DeleteMapping("/borrar/{id}")
-	public String borrarUsuario(@PathVariable("id") String id) {
-		uRepo.deleteById(id);
-		return "Registro borrado";
-	}
-	*/
 	
 	// ToDo: Bloque try-catch (mensaje si usuario no existe; error en el borrado; server_error)
 	@DeleteMapping("/borrar/{id}")

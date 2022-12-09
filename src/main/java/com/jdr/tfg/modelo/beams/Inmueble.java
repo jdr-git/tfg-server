@@ -1,5 +1,3 @@
-
-
 package com.jdr.tfg.modelo.beams;
 
 import java.util.ArrayList;

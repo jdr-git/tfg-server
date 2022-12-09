@@ -38,15 +38,6 @@ public class InmuebleControlador {
 	
 	// === CREATE ===
 	
-	/*
-	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping("/crear")
-	public String insertarInmueble(@RequestBody Inmueble inmueble) {
-		iRepo.save(inmueble);
-		return "Nuevo registro insertado";
-	}
-	*/
-	
 	// ToDo: Bloque try-catch (inmueble existe; server_error)
 	@PostMapping("/crear")
 	public ResponseEntity<Inmueble> insertarInmueble(@RequestBody Inmueble inmueble) {
@@ -54,13 +45,6 @@ public class InmuebleControlador {
 	}
 	
 	// === READ ===
-
-	/*
-	@GetMapping("/mostrarTodos")
-	public List<Inmueble> encontrarTodosInmuebles() {
-		return iRepo.findAll();
-	}
-	*/
 	
 	// ToDo: Bloque try-catch (colección vacía; server_error)
 	@GetMapping("/mostrarTodos")
@@ -74,7 +58,6 @@ public class InmuebleControlador {
 		return new ResponseEntity<>(iRepo.findById(id).get(), HttpStatus.OK);
 	}
 	
-
 	// === UPDATE ===
 	
 	// ToDo: Bloque try-catch (inmueble no existe; error en la actualización; server_error)
