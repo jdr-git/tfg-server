@@ -69,6 +69,12 @@ public class UsuarioControlador {
 		return new ResponseEntity<>(uRepo.findById(id).get(), HttpStatus.OK);
 	}
 	
+	// ToDo: Bloque try-catch (usuario no existe)
+		@GetMapping("/mostrar/{email}")
+		public ResponseEntity<Usuario> encontrarUsuarioPorEmail(@PathVariable("email") String email) {
+			return new ResponseEntity<>(uRepo.findById(email).get(), HttpStatus.OK);
+		}
+	
 		
 	// === UPDATE ===
 		
